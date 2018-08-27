@@ -1,31 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from './Card';
 
-class CardList extends Component {
-	constructor() {
-		super();
-		this.state = {
-			robots: [],
-			searchField: '',
-		};
-	}
-
-	componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/users/')
-			.then(res => res.json())
-			.then(users => this.setState({ robots: users }));
-	}
-
-  render() {
-  	const { robots } = this.state;
-    return (
-      <div className='flex flex-wrap'>
-        {robots.map(robot => {
-        	return <Card id={robot.id} name={robot.name} email={robot.email} />
-        })}
-      </div>
-    );
-  }
+const CardList = ({ array }) => {
+  return (
+    <div className='flex flex-wrap justify-center mt3 bt b--black-10'>
+      {array.map(_ => <Card key={_.id} name={_.name} email={_.email} />)}
+    </div>
+  );
 }
 
 export default CardList;
