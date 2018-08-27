@@ -19,7 +19,7 @@ class CardList extends Component {
   render() {
   	const { robots } = this.state;
     return (
-      <div>
+      <div className='flex flex-wrap'>
         {robots.map(robot => {
         	return <Card id={robot.id} name={robot.name} email={robot.email} />
         })}
